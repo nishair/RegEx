@@ -1,0 +1,14 @@
+#Package
+from string import Template
+#Create a template
+t = Template('x is $x')
+#Substitute value of x
+print (t.substitute({'x' : 1}))
+
+#A list
+Student = [('Ram',90),('Ash',80),('Ron',70)]
+#Another Template
+t = Template('Hi $name, you scored $marks marks')
+#For loop for substitue and printing
+for i in Student:
+	print(t.substitute(name = i[0], marks=i[1]))
