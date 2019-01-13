@@ -1,0 +1,61 @@
+import re
+#compile regex
+p = re.compile('[a-e]')
+#findall Instances in the regex compiles
+print(p.findall("Aye, said Mr. Gibenson Stark"))
+
+p = re.compile('\d')
+#find digits
+print(p.findall("I went to him at 11 A.M on 5th Jully 1993"))
+#find complete digits
+p = re.compile('\d+')
+print(p.findall("I went to him at 11 A.M on 7th June 1947"))
+#Find whitespace characters
+p = re.compile('\w')
+print(p.findall("He said * in some_lang."))
+
+#Find words
+p = re.compile('\w+')
+print(p.findall("I went to him at 11 A.M., he said in *** some_language"))
+
+#Finds non-alphanumeric
+p = re.compile('\W')
+print(p.findall("he said *** in some_language"))
+
+#* finds zero or more occurences
+p = re.compile('ab*')
+print(p.findall("ababbaabbb"))
+
+
+from re import split
+#Splits on finding non-alphanumeric
+print(split('\W+','Words, words , Words'))``
+print(split('\W+',"Word's words Words"))
+
+print(split('\W+','On 12th Jan 2016, at 11:02 AM'))
+#Splits on numbers
+print(split('\d+','On 12th Jan 2016, at 11:02 AM '))
+
+#Splits only once
+print(re.split('\d+','On 12th Jan 2016, at 11:02 AM',1))
+#splits on A as well since we are ignoringcase
+print(re.split('[a-f]+', 'Aye, Boy oh boy, come here',flags = re.IGNORECASE)
+#Replaces both the ub's since we ignorecase
+print(re.sub('ub','~*','Subject has Uber booked already', flags=re.IGNORECASE))
+#Replaces the ub without the capital since we do not ignore case
+print(re.sub('ub','~*','Subject has Uber booked already'))
+#Replaces the ub only onsubnce
+print(re.sub('ub','~*','Subject has Uber booked already', flags=re.IGNORECASE, count=1))
+#Replaces the  AND specify r'' for the pattern
+ print(re.sub(r'\sAND\s',' & ','Baked Beans And Spam', flags=re.IGNORECASE))
+#The difference between subn and sub is that subn provides the output in the form of a tuple
+print(re.subn('ub','~*','Subject has Uber booked already'))
+
+t = (re.subn('ub','~*','Subject has Uber booked already', flags=re.IGNORECASE))
+print(t)
+print(len(t))
+print(t[0])
+
+#Prints all escape characters
+print(re.escape("This is Awesome even 1 AM"))
+print(re.escape("I Asked what is this [a-9], he said \t ^WoW"))
