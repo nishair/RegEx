@@ -1,0 +1,35 @@
+import re 
+
+regex = r"([a-zA-z]+) (\d+)"
+
+match = re.search(regex, "John's birthday is on August 5")
+
+if match != None:
+	print("Match at index %s,%s" % (match.start(),match.end()))
+	print("Full Match: %s" % (match.group(0)))
+	print("Month: %s" % (match.group(1)))
+	print("Day: %s" % (match.group(2)))
+else:
+	print("The regex pattern does not match")
+
+#Match
+def findMonthAndDate(string):
+	regex = r"([A-Za-z]+) (\d+)"
+	match = re.match(regex,string)
+	if match == None:
+		print("No Valid Date")
+		return
+	print("Given Data: %s " % (match.group()))
+	print("Month: %s " % (match.group(1)))
+	print("Day: %s " % (match.group(2)))
+
+findMonthAndDate("September 05")
+print("")
+findMonthAndDate("I was born on June 24")
+
+#FINDALL
+string = "Hello my number is 9819292441 and my friend's number is 1385018111"
+regex = '\d+'
+match = re.findall(regex, string)
+print(match)
+
